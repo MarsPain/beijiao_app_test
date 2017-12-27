@@ -24,6 +24,8 @@
 		        alert($("#searchInput").val());
 		    }
 		}
+		
+		 
 	</script>
 </head>
 <body>
@@ -37,14 +39,17 @@
 		mui('body').on('tap','.industry',function(){
 			ind = $(this).text();
 		    alert(ind);
-		    mui.openWindow({
-		    	url:"policyList.html",
-		    	id:ind,
-		    	extras:{
-		    		ind:ind,
-		    	},
-		    });
+		    mui('#offCanvasWrapper').offCanvas('close');
+//		    offCanvasWrapper.offCanvas('close');
+//		    mui.openWindow({
+//		    	url:"policyList.html",
+//		    	id:ind,
+//		    	extras:{
+//		    		ind:ind,
+//		    	},
+//		    });
 		});
+		
     </script>
     
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
@@ -56,10 +61,10 @@
 			        <span id="sideBar_title">行业选择</span>
 			        <ul id="sideBar_list" class="mui-table-view">
 						<li class="mui-table-view-cell">
-					        <a class="mui-navigate-right industry" href="policyList.html">热点关注</a>
+					        <a class="mui-navigate-right industry">热点关注</a>
 					   	</li>
 					    <li class="mui-table-view-cell">
-					        <a class="mui-navigate-right industry" href="policyList.html">机械化工</a>
+					        <a class="mui-navigate-right industry">机械化工</a>
 					    </li>
 					    <li class="mui-table-view-cell">
 					        <a class="mui-navigate-right industry">交通汽车</a>
