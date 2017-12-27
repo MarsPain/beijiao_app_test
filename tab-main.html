@@ -1,0 +1,192 @@
+<!-- tab-*.html 举例-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>此处就是显示的标题</title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/tab-main.css" rel="stylesheet" />
+    <script type="text/javascript" charset="UTF-8">
+        mui.init();
+    </script>
+    <script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="js/tab-main.js"></script>
+    <script type="text/javascript">
+		function select_institution(){
+			alert($("#institution option:selected").text());
+		};
+		
+		function enterSearch(e) {
+		    if(e.keyCode == 13) {
+		        $("#searchInput").blur();
+		        alert($("#searchInput").val());
+		    }
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+//		进入详情页面的函数
+		mui('body').on('tap','#pol li a',function(){
+			window.top.location.href=this.href;
+		});
+		
+//		对侧滑菜单栏进行取值的函数
+		mui('body').on('tap','.industry',function(){
+			ind = $(this).text();
+		    alert(ind);
+		    mui.openWindow({
+		    	url:"policyList.html",
+		    	id:ind,
+		    	extras:{
+		    		ind:ind,
+		    	},
+		    });
+		});
+    </script>
+    
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+		<!--侧滑菜单部分-->
+		<aside id="offCanvasSide" class="mui-off-canvas-left">
+			<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+				<div id="sideBar" class="mui-scroll">
+					<!-- 菜单具体展示内容 -->
+			        <span id="sideBar_title">行业选择</span>
+			        <ul id="sideBar_list" class="mui-table-view">
+						<li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry" href="policyList.html">热点关注</a>
+					   	</li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry" href="policyList.html">机械化工</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">交通汽车</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">房产建材</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">服装纺织</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">IT互联网</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">文化传媒</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">医疗</a>
+					    </li>
+					    <li class="mui-table-view-cell">
+					        <a class="mui-navigate-right industry">食品</a>
+					    </li>
+					</ul>
+				</div>
+			</div>
+		</aside>
+		<!--主界面部分-->
+		<div class="mui-inner-wrap">
+			<header id="head" class="mui-bar mui-bar-nav">
+				<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+				<h1 id="head_title" class="mui-title">新政策网</h1>
+			</header>
+			<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<!--导航栏：左侧是区域选择的下拉菜单，右侧是搜索框-->
+					<div id="nav_wrap">
+						<div id="nav_left_wrap">
+							<div id="nav_left">
+								<form>
+									<select id="institution" name="发布机构" onchange="select_institution()">
+										<option value="">国务院</option>
+										<option value="">发展和改革委员会</option>
+										<option value="">工业和信息化部门</option>
+										<option value="">科学技术部门</option>
+										<option value="">人力资源和社会保障部门</option>
+										<option value="">商务部门</option>
+										<option value="">其他</option>
+									</select>
+								</form>
+							</div>
+						</div>
+						
+						<div id="search" class="mui-content">
+						    <div class="mui-input-row mui-search">
+							    <input id="searchInput" type="search" onkeyup="enterSearch(event)" class="mui-input-clear" placeholder="s ">
+							</div>
+					    </div>
+					</div>
+					
+					<!--图片轮播-->
+				    <div id="img_policy" class="mui-slider">
+					    <div class="mui-slider-group mui-slider-loop">
+						    <!--支持循环，需要重复图片节点-->
+						    <div class="mui-slider-item mui-slider-item-duplicate"><a href="policy-img.html"><img src="images/02.jpg" /></a></div>
+						    <div class="mui-slider-item"><a href="policy-img.html"><img src="images/01.jpg" /></a></div>
+						    <div class="mui-slider-item"><a href="policy-img.html"><img src="images/02.jpg" /></a></div>
+						    <!--支持循环，需要重复图片节点-->
+						    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/01.jpg" /></a></div>
+					    </div>
+					</div>
+					
+					<!--消息列表-->
+					<div id="policy_list">
+						<ul class="mui-table-view" id="pol">
+							<li class="mui-table-view-cell mui-media">
+							    <a class="policy" href="policy.html">
+							        <div class="mui-media-body">
+							        	<div class="policy_institution"></div>
+							            <p class='mui-ellipsis'>李克强对全国小微企业金融服务电视电话会议作出重要批示</p>
+							        	<span class="time">2017-11-15</span>
+							        </div>
+							    </a>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+							    <a href="javascript:;">
+							        <div class="mui-media-body">
+							        	<div class="policy_institution"></div>
+							            <p class='mui-ellipsis'>《习近平谈治国理政》第二卷中英文版出版发行</p>
+							            <span class="time">2017-11-15</span>
+							        </div>
+							    </a>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+							    <a href="javascript:;">
+							        <div class="mui-media-body">
+										<div class="policy_institution"></div>
+							            <p class='mui-ellipsis'>工商总局召开贯彻落实“证照分离”改革试点工作媒体通气会</p>
+							            <span class="time">2017-11-15</span>
+							        </div>
+							    </a>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+							    <a href="javascript:;">
+							        <div class="mui-media-body">
+										<div class="policy_institution"></div>
+							            <p class='mui-ellipsis'>工商总局召开贯彻落实“证照分离”改革试点工作媒体通气会</p>
+							            <span class="time">2017-11-15</span>
+							        </div>
+							    </a>
+							</li>
+							<li class="mui-table-view-cell mui-media">
+							    <a href="javascript:;">
+							        <div class="mui-media-body">
+										<div class="policy_institution"></div>
+							            <p class='mui-ellipsis policy_title'></p>
+							            <span class="time">2017-11-15</span>
+							        </div>
+							    </a>
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+			</div>
+			<!-- off-canvas backdrop -->
+			<div class="mui-off-canvas-backdrop"></div>
+		</div>
+	</div>
+</body>
+</html>
