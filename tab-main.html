@@ -30,26 +30,13 @@
 </head>
 <body>
 	<script type="text/javascript">
-//		进入详情页面的函数
-		mui('body').on('tap','#pol li a',function(){
+		mui('body').on('tap','a',function(){
 			window.top.location.href=this.href;
 		});
 		
-//		对侧滑菜单栏进行取值的函数
 		mui('body').on('tap','.industry',function(){
-			ind = $(this).text();
-		    alert(ind);
-		    mui('#offCanvasWrapper').offCanvas('close');
-//		    offCanvasWrapper.offCanvas('close');
-//		    mui.openWindow({
-//		    	url:"policyList.html",
-//		    	id:ind,
-//		    	extras:{
-//		    		ind:ind,
-//		    	},
-//		    });
+			mui('#offCanvasWrapper').offCanvas('close');
 		});
-		
     </script>
     
     <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
